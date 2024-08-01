@@ -1,0 +1,50 @@
+.contenedor {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.seccion_imagen {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.seccion_imagen img {
+  height: 98vh;
+  width: 48vw;
+  border-radius: 1rem;
+}
+
+.seccion_formulario {
+  padding: 6rem;
+}
+
+.header h1 {
+  color: white;
+  text-align: center;
+  font-weight: 400;
+}
+
+.contenedor_formulario {
+    width: 100%;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.contenedor_formulario input {
+    background-color: #3b364c;
+    padding: 1rem;
+    width: 100%;
+    border: none;
+    border-radius: .4rem;
+}
+
+.grupo_input {
+    display: flex;
+    gap: 1rem;
+}
