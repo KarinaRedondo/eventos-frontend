@@ -1,4 +1,5 @@
 import styles from "./Registrarse.module.css";
+import { BotonComponente } from "../../Componentes/ui/boton";
 
 const Registrarse = () => {
   return (
@@ -17,6 +18,7 @@ const Registrarse = () => {
           </div>
           <input type="email" placeholder="Correo electronico" />
           <input type="password" placeholder="Contraseña" />
+          <BotonComponente label="Crear cuenta"/>
         </div>
       </div>
     </div>
