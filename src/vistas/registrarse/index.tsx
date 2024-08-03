@@ -4,6 +4,10 @@ import { useState } from "react";
 
 const Registrarse = () => {
   const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [correoElectronico, setCorreoElectronico] =useState("")
+  const [contraseña, setContraseña]= useState("")
+  console.log("INFORMACION", nombre, apellido, correoElectronico, contraseña)
 
   return (
     <div className={styles.contenedor}>
@@ -22,10 +26,21 @@ const Registrarse = () => {
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
             />
-            <input type="text" placeholder="Ingresa tu apellido" />
+            <input
+              type="text"
+              placeholder="Ingresa tu apellido"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
+            />
           </div>
-          <input type="email" placeholder="Correo electronico" />
-          <input type="password" placeholder="Contraseña" />
+          <input type="email" placeholder="Correo electronico" 
+          value={correoElectronico}
+          onChange={(e) => setCorreoElectronico(e.target.value)}
+          />
+          <input type="password" placeholder="Contraseña" 
+          value={contraseña}
+          onChange={(e) => setContraseña(e.target.value)}
+          />
           <BotonComponente label="Crear cuenta" />
         </div>
       </div>
