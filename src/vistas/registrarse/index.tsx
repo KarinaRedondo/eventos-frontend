@@ -1,24 +1,19 @@
 import styles from "./Registrarse.module.css";
 import { BotonComponente } from "../../Componentes/ui/boton";
-import { useState } from "react";
-import { registrarUsuarioApi } from "../../servicios/users";
+import useRegistrar from "../../hooks/usuarios/useRegistrar";
 
 const Registrarse = () => {
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [correoElectronico, setCorreoElectronico] = useState("");
-  const [contraseña, setContraseña] = useState("");
-  console.log("INFORMACION", nombre, apellido, correoElectronico, contraseña);
-
-  const crearUsuarioPeticion = async() => {
-   await registrarUsuarioApi({
-      nombre,
-      apellido,
-      correo: correoElectronico,
-      contraseña,
-      rol: "organizador",
-    });
-  };
+  const {
+    nombre,
+    setNombre,
+    apellido,
+    setApellido,
+    setCorreoElectronico,
+    correoElectronico,
+    contraseña,
+    setContraseña,
+    crearUsuarioPeticion
+  } = useRegistrar();
 
   return (
     <div className={styles.contenedor}>
@@ -56,7 +51,10 @@ const Registrarse = () => {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
           />
-          <BotonComponente label="Crear cuenta" onClick={crearUsuarioPeticion}/>
+          <BotonComponente
+            label="Crear cuenta"
+            onClick={crearUsuarioPeticion}
+          />
         </div>
       </div>
     </div>
@@ -64,4 +62,3 @@ const Registrarse = () => {
 };
 
 export default Registrarse;
-
