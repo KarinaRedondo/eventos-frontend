@@ -8,4 +8,4 @@ export interface User {
 }
 //Omit
 export type crearUsuarioDto= Omit<User, "id">
-export type actualizarUsuarioDto=Partial<User>
+export type actualizarUsuarioDto=Partial<User> 
