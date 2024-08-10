@@ -12,11 +12,11 @@ const Layout = ({ children }: Props) => {
   };
   return (
     <div className={styles.layout}>
-      <Sidebar abrirSidebar={true} altenarSidebar={verSidebar} />
+      <Sidebar estaAbierto={open} alternarBarraLateral={verSidebar} />
       <div
-        className={`${styles.contenidoVistas}${
-          open ? styles.contenidoVistasAbierto : ""
-        }`}
+        className={
+          open ? styles.contenidoVistasAbierto : styles.contenidoVistas
+        }
       >
         {children}
       </div>

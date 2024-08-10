@@ -4,9 +4,10 @@
 }
 .contenidoVistas {
   flex-grow: 1;
-  padding-left: 6rem;
-  transition: margin-left 0.3s ease;
+  margin-left: 9rem;
+  transition: margin 0.5s ease;
 }
 .contenidoVistasAbierto {
-  margin-left: 16rem;
+  margin-left: 22rem;
+  transition: margin 0.5s ease;
 }

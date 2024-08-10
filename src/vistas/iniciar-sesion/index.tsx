@@ -2,21 +2,15 @@ import { useState } from "react";
 import style from "./IniciarSesion.module.css";
 import { BotonComponente } from "../../Componentes/ui/boton";
 import { iniciarSesionApi } from "../../servicios/login";
-import { useNavigate } from "react-router-dom";
 
 const IniciarSesion = () => {
-  const redireccion = useNavigate();
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
-  const loginPeticion = async () => {
-    const data = await iniciarSesionApi({
-      correo,
-      contraseña,
-    });
-    if (data) {
-      redireccion("/eventos");
-    }
+  
+  const loginPeticion = () => {
+    iniciarSesionApi(correo, contraseña);
   };
+
   return (
     <div className={style.contenedor_iniciar_sesion}>
       <div className={style.contenedor_izquierdo}>
@@ -36,6 +30,7 @@ const IniciarSesion = () => {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
           />
+          <input type="text" />
           <BotonComponente label="Inicia sesion" onClick={loginPeticion} />
         </div>
       </div>
