@@ -1,0 +1,26 @@
+.sidebar {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: width 0.3s ease;
+}
+.sidebarAbierto {
+  width: 16rem;
+}
+.sidebarCerrado {
+  width: 6rem;
+}
+.icono{
+    min-width: 2.4rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+    transition: margin 0.3s ease;
+}
+

@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import IniciarSesion from "./vistas/iniciar-sesion";
 import Registrarse from "./vistas/registrarse";
+import Eventos from "./vistas/eventos";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/iniciar-sesion" element={<IniciarSesion />} />
           <Route path="/registrarse" element={<Registrarse />} />
+          <Route path="/eventos" element={<Eventos />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -1,0 +1,12 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+.contenidoVistas {
+  flex-grow: 1;
+  padding-left: 6rem;
+  transition: margin-left 0.3s ease;
+}
+.contenidoVistasAbierto {
+  margin-left: 16rem;
+}
