@@ -12,7 +12,7 @@ const Registrarse = () => {
     correoElectronico,
     contraseña,
     setContraseña,
-    crearUsuarioPeticion
+    crearUsuarioPeticion 
   } = useRegistrar();
 
   return (

@@ -1,10 +1,17 @@
 import { useState } from "react";
 import style from "./IniciarSesion.module.css";
 import { BotonComponente } from "../../Componentes/ui/boton";
+import { iniciarSesionApi } from "../../servicios/login";
 
 const IniciarSesion = () => {
   const [correoElectronico, setCorreoElectronico] = useState("");
   const [contraseña, setContraseña] = useState("");
+  const loginPeticion = () => {
+    iniciarSesionApi({
+      correo,
+      contraseña,
+    });
+  };
   return (
     <div className={style.contenedor_iniciar_sesion}>
       <div className={style.contenedor_izquierdo}>
@@ -24,7 +31,10 @@ const IniciarSesion = () => {
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
           />
-          <BotonComponente label="Inicia sesion" />
+          <input type="text" />
+          <BotonComponente label="Inicia sesion"
+          onClick= {loginPeticion} 
+          /> 
         </div>
       </div>
 
