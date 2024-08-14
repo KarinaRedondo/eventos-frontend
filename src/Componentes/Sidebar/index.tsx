@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Info, Briefcase, Phone, LogOut } from "react-feather";
+import { Home, Info, Briefcase, LogOut } from "react-feather";
 import estilos from "./Sidebar.module.css";
 import { Menu, Minimize } from "react-feather";
 import { User } from "../../models/user";
@@ -12,21 +12,21 @@ interface PropsBarraLateral {
 
 const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
   const [usuario, setUsuario] = useState<User>({
-    nombre: "Edgar",
-    apellido: "Matos",
+    nombre: "",
+    apellido: "",
     id: "1",
     contraseña: "",
-    correo: "19matos96@gmail.com",
+    correo: "",
     rol: "",
   });
 
-  // useEffect(() => {
-  //   // Obtener el objeto usuario desde localStorage y parsearlo
-  //   const storedUsuario = localStorage.getItem("usuario");
-  //   if (storedUsuario) {
-  //     setUsuario(JSON.parse(storedUsuario));
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Obtener el objeto usuario desde localStorage y parsearlo
+    const storedUsuario = localStorage.getItem("usuario");
+    if (storedUsuario) {
+      setUsuario(JSON.parse(storedUsuario));
+    }
+  }, []);
   return (
     <div
       className={`${estilos.barraLateral} ${
@@ -47,9 +47,10 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
             </div>
           )}
         </div>
+
         <div className={estaAbierto ? estilos.info_User : estilos.info_oculta}>
           <span>
-            {usuario.nombre} {usuario.apellido}
+            {usuario.nombre.toUpperCase()} {usuario.apellido.toUpperCase()}
           </span>
           <span className={estilos.correo}>{usuario.correo}</span>
         </div>
@@ -57,33 +58,21 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
 
       <div className={estilos.contenedor_body}>
         <div className={estilos.contenedor_enlaces}>
-          <Link
-            to="/"
-            className={estilos.enlace}
-            onClick={alternarBarraLateral}
-          >
+          <Link to="/" className={estilos.enlace}>
             <span className={estilos.icono}>
               <Home size={24} />
             </span>
             <span className={estilos.texto}>Inicio</span>
           </Link>
 
-          <Link
-            to="/about"
-            className={estilos.enlace}
-            onClick={alternarBarraLateral}
-          >
+          <Link to="/eventos" className={estilos.enlace}>
             <span className={estilos.icono}>
               <Info size={24} />
             </span>
             <span className={estilos.texto}>Eventos</span>
           </Link>
 
-          <Link
-            to="/services"
-            className={estilos.enlace}
-            onClick={alternarBarraLateral}
-          >
+          <Link to="/asistentes" className={estilos.enlace}>
             <span className={estilos.icono}>
               <Briefcase size={24} />
             </span>
@@ -92,11 +81,7 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
         </div>
 
         <div className={estilos.cerrar_Sesion}>
-          <Link
-            to="/contact"
-            className={estilos.enlace}
-            onClick={alternarBarraLateral}
-          >
+          <Link to="/contact" className={estilos.enlace}>
             <span className={estilos.icono}>
               <LogOut size={24} />
             </span>
