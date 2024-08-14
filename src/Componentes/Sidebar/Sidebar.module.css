@@ -22,6 +22,10 @@
   overflow: hidden;
 }
 
+.info_oculta {
+  display: none;
+}
+
 .encabezadoBarraLateral {
   display: flex;
   justify-content: right;
@@ -85,4 +89,72 @@
 
 .enlace:hover {
   color: #f1f1f1;
+}
+
+/* INFO USER */
+.cn_header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  height: 10rem;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  background-color: #007bff; /* Azul */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.info_User {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info_User span {
+  color: #fff;
+  font-weight: 600;
+  width: 100%;
+  text-align: center;
+}
+
+.correo {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.contenedor_body {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+}
+
+.cerrar_Sesion {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #818181;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  transition: 0.3s;
+  white-space: nowrap;
+  padding: 1.5rem;
 }
