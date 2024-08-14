@@ -14,7 +14,7 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
   const [usuario, setUsuario] = useState<User>({
     nombre: "",
     apellido: "",
-    id: "1",
+    id: "",
     contraseña: "",
     correo: "",
     rol: "",
