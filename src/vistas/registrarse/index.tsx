@@ -12,19 +12,17 @@ const Registrarse = () => {
     correoElectronico,
     contraseña,
     setContraseña,
-    crearUsuarioPeticion 
+    crearUsuarioPeticion,
   } = useRegistrar();
 
   return (
     <div className={styles.contenedor}>
-      <div className={styles.seccion_imagen}>
-        <img src="/registrarse.png" alt="" />
-      </div>
       <div className={styles.seccion_formulario}>
+       
+        <div className={styles.contenedor_formulario}>
         <div className={styles.header}>
           <h1>Registrarse</h1>
         </div>
-        <div className={styles.contenedor_formulario}>
           <div className={styles.grupo_input}>
             <input
               type="text"
@@ -56,6 +54,9 @@ const Registrarse = () => {
             onClick={crearUsuarioPeticion}
           />
         </div>
+      </div>
+      <div className={styles.seccion_imagen}>
+        <h1>IZQUIERDA</h1>
       </div>
     </div>
   );

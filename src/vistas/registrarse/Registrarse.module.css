@@ -1,51 +1,48 @@
 .contenedor {
-  height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 5fr;
+  height: 100vh;
 }
 
 .seccion_imagen {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.seccion_imagen img {
-  height: 98vh;
-  width: 48vw;
-  border-radius: 1rem;
+  background-color: #000;
+  color: #000;
 }
 
 .seccion_formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 6rem;
 }
 
 .header h1 {
-  color: white;
+  color: #070f2b;
   text-align: center;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
 }
 
 .contenedor_formulario {
-    width: 100%;
-    margin-top: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.4rem;
 }
 
 .contenedor_formulario input {
-    background-color: #3b364c;
-    padding: 1rem;
-    width: 100%;
-    border: none;
-    border-radius: .4rem;
+  background-color: #f2f2f2;
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  border-radius: 0.4rem;
 }
 
 .grupo_input {
-    display: flex;
-    gap: 1rem;
-} 
+  display: flex;
+  gap: 1rem;
+}

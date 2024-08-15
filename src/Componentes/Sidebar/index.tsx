@@ -43,14 +43,14 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
         <div className={estilos.logo}>
           {usuario && (
             <div className={estilos.avatar}>
-              {usuario.nombre.charAt(0).toUpperCase()}
+              {usuario.nombre.charAt(0)?.toUpperCase()}
             </div>
           )}
         </div>
 
         <div className={estaAbierto ? estilos.info_User : estilos.info_oculta}>
           <span>
-            {usuario.nombre.toUpperCase()} {usuario.apellido.toUpperCase()}
+            {usuario.nombre?.toUpperCase()} {usuario.apellido?.toUpperCase()}
           </span>
           <span className={estilos.correo}>{usuario.correo}</span>
         </div>

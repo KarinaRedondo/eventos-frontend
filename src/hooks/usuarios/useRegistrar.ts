@@ -1,21 +1,19 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 import { registrarUsuarioApi } from "../../servicios/users";
 
 const useRegistrar = () => {
-  // Estados para los campos del formulario
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [correoElectronico, setCorreoElectronico] = useState("");
   const [contraseña, setContraseña] = useState("");
 
-  // Estado para manejar el estado de carga y errores
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Función para crear un nuevo usuario
   const crearUsuarioPeticion = async () => {
-    setIsLoading(true); // Indicar que la petición está en curso
-    setError(null); // Limpiar errores previos
+    setIsLoading(true);
+    setError(null);
     try {
       await registrarUsuarioApi({
         nombre,
@@ -24,19 +22,31 @@ const useRegistrar = () => {
         contraseña,
         rol: "organizador",
       });
-      // Aquí podrías manejar el éxito (por ejemplo, mostrar un mensaje)
+
+      Swal.fire({
+        icon: "success",
+        title: "Usuario registrado",
+        text: "El usuario ha sido registrado con éxito.",
+      });
     } catch (err: unknown) {
+      let errorMessage = "Error desconocido";
+
       if (err instanceof Error) {
-        setError(err.message || "Error al registrar el usuario");
-      } else {
-        setError("Error desconocido");
+        errorMessage = err.message || "Error al registrar el usuario";
       }
+
+      setError(errorMessage);
+
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: errorMessage,
+      });
     } finally {
-      setIsLoading(false); // Indicar que la petición ha terminado
+      setIsLoading(false);
     }
   };
 
-  // Retornar los estados y la función para el componente que use el hook
   return {
     nombre,
     setNombre,
