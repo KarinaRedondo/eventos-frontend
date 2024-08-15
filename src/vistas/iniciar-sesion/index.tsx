@@ -3,6 +3,7 @@ import style from "./IniciarSesion.module.css";
 import { BotonComponente } from "../../Componentes/ui/boton";
 import { iniciarSesionApi } from "../../servicios/login";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "react-feather";
 import Swal from "sweetalert2";
 
 const IniciarSesion = () => {
@@ -10,12 +11,19 @@ const IniciarSesion = () => {
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [cargando, setCargando] = useState(false);
+  const [verContraseña, setVerContraseña] = useState(false);
 
   const loginPeticion = async () => {
     setCargando(true); // Comienza la carga
     try {
-      const data = await iniciarSesionApi(correo, contraseña);
-      localStorage.setItem("usuario", JSON.stringify(data)); // Guardar en localStorage
+      const informacionDelUsuarioLogueado = await iniciarSesionApi(
+        correo,
+        contraseña
+      );
+      localStorage.setItem(
+        "usuario",
+        JSON.stringify(informacionDelUsuarioLogueado)
+      ); // Guardar en localStorage
       Swal.fire({
         icon: "success",
         title: "Inicio de sesión exitoso",
@@ -24,24 +32,11 @@ const IniciarSesion = () => {
       });
       navigate("/eventos"); // Redireccionar a /eventos
     } catch (error: unknown) {
-      let mensajeError = "Algo salió mal, por favor intente nuevamente.";
-      if (error instanceof Error) {
-        if (
-          typeof error === "object" &&
-          error !== null &&
-          "response" in error &&
-          typeof error.response === "object" &&
-          error.response !== null &&
-          "data" in error.response
-        ) {
-          mensajeError = error.response.data as string;
-        } else {
-          mensajeError = error.message;
-        }
-      }
+      const mensajeError = "Algo salió mal, por favor intente nuevamente.";
       Swal.fire({
         icon: "error",
         title: "Error",
+        showConfirmButton: true,
         text: mensajeError,
       });
     } finally {
@@ -61,12 +56,18 @@ const IniciarSesion = () => {
           value={correo}
           onChange={(e) => setCorreo(e.target.value)}
         />
-        <input
-          type="password"
-          placeholder="Ingresa tu contraseña"
-          value={contraseña}
-          onChange={(e) => setContraseña(e.target.value)}
-        />
+        <div className={style.input_contraseña}>
+          <input
+            type={verContraseña ? "text" : "password"}
+            placeholder="Ingresa tu contraseña"
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
+          />
+          <button onClick={() => setVerContraseña(!verContraseña)}>
+            {verContraseña ? <EyeOff /> : <Eye />}
+          </button>
+        </div>
+
         <BotonComponente
           label={cargando ? "Cargando..." : "Inicia sesion"}
           onClick={loginPeticion}

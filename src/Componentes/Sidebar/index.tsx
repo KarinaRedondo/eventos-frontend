@@ -27,6 +27,7 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
       setUsuario(JSON.parse(storedUsuario));
     }
   }, []);
+
   return (
     <div
       className={`${estilos.barraLateral} ${
@@ -81,7 +82,7 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
         </div>
 
         <div className={estilos.cerrar_Sesion}>
-          <Link to="/contact" className={estilos.enlace}>
+          <Link to="/iniciar-sesion" className={estilos.enlace}>
             <span className={estilos.icono}>
               <LogOut size={24} />
             </span>
