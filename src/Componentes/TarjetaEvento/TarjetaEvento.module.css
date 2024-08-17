@@ -1,0 +1,30 @@
+.tarjeta_evento {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+  border-bottom: 4px solid #007bff;
+}
+
+.nombre_evento {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.item_tarjeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.item_tarjeta span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: gray;
+}
+
+.item_tarjeta p {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
