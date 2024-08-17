@@ -1,0 +1,53 @@
+.header_eventos {
+  display: flex;
+  min-width: 100% !important;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: #fff;
+}
+
+.contenedor_tarjetas_eventos {
+  padding: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.tarjeta_evento {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  width: 35rem;
+  border-bottom: 4px solid #007bff;
+}
+
+.nombre_evento {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.item_tarjeta {
+  display: flex;
+  flex-direction: column;
+}
+
+.item_tarjeta span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: gray;
+}
+
+.item_tarjeta p {
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.contenedor_items{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
