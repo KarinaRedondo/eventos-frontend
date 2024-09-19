@@ -45,3 +45,15 @@
   background-color: transparent;
   cursor: pointer;
 }
+
+.container_texto_footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.container_texto_footer p{
+  color: #30475e;
+  font-weight: 400;
+}

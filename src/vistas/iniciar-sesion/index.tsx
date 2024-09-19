@@ -7,7 +7,7 @@ import { Eye, EyeOff } from "react-feather";
 import Swal from "sweetalert2";
 
 const IniciarSesion = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Utilizar para redireccionar a otra ruta
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [cargando, setCargando] = useState(false);
@@ -72,6 +72,12 @@ const IniciarSesion = () => {
           label={cargando ? "Cargando..." : "Inicia sesion"}
           onClick={loginPeticion}
         />
+
+        <div className={style.container_texto_footer}>
+          <p>
+            ¿No tienes cuenta? <a href="/registrarse">Registrate</a>
+          </p>
+        </div>
       </div>
     </div>
   );
