@@ -1,0 +1,32 @@
+.contenedorModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.45rem;
+  min-width: 30rem;
+  max-width: 50rem;
+}
+.headerModal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerModal button:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.contenido {
+  margin-top: 2rem;
+}
