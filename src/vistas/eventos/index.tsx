@@ -8,7 +8,7 @@ import { ModalComponente } from "../../Componentes/Modal";
 import { Search } from "react-feather";
 
 const Eventos = () => {
-  const usuario = localStorage.getItem("usuarios");
+  const usuario = localStorage.getItem("usuario");
   const user = JSON.parse(usuario!);
 
   const [nombre, setNombre] = useState("");
@@ -127,7 +127,7 @@ const Eventos = () => {
             <label>Ubicacion</label>
             <input type="text" onChange={(e) => setUbicacion(e.target.value)} />
           </div>
-          <button onClick={ ()=> crearEventoFuncion()}>Crear</button>
+          <button onClick={crearEventoFuncion}>Crear</button>
         </form>
       </ModalComponente>
     </Layout>

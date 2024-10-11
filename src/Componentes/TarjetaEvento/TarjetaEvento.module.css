@@ -1,7 +1,7 @@
 
 
 .tarjeta_evento {
-  background-color: #fff;
+  background-color: #f2f2f2;
   padding: 2rem;
   border-radius: 0.6rem;
   display: flex;
@@ -30,7 +30,7 @@
   font-weight: 500;
   font-size: 1.4rem;
 }
-.contenedor__botones {
+.contenedor_botones {
   display: flex;
   justify-content: space-between;
   width: 100%;

@@ -1,6 +1,6 @@
 .contenedor {
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 3fr 5fr;
   height: 100vh;
 }
 
@@ -45,4 +45,30 @@
 .grupo_input {
   display: flex;
   gap: 1rem;
+}
+
+.container_texto_footer_registrarse{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.container_texto_footer_registrarse p{
+  color: #30475e;
+  font-weight: 400;
+}
+
+.input_contraseña_registrarse {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding-right: 1rem;
+}
+
+.input_contraseña_registrarse button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }

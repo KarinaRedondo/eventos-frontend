@@ -1,6 +1,8 @@
 import styles from "./Registrarse.module.css";
 import { BotonComponente } from "../../Componentes/ui/boton";
 import useRegistrar from "../../hooks/usuarios/useRegistrar";
+import { Eye, EyeOff } from "react-feather";
+import { useState } from "react";
 
 const Registrarse = () => {
   const {
@@ -15,6 +17,7 @@ const Registrarse = () => {
     crearUsuarioPeticion,
   } = useRegistrar();
 
+  const [verContraseña, setVerContraseña] = useState(false);
   return (
     <div className={styles.contenedor}>
       <div className={styles.seccion_formulario}>
@@ -43,16 +46,27 @@ const Registrarse = () => {
             value={correoElectronico}
             onChange={(e) => setCorreoElectronico(e.target.value)}
           />
+         
+         <div className={styles.input_contraseña_registrarse}>
           <input
-            type="password"
+            type={verContraseña ? "text": "password"}
             placeholder="Contraseña"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
           />
+          <button onClick={() => setVerContraseña(!verContraseña)}>
+            {verContraseña ? <EyeOff /> : <Eye/> }
+          </button>
+          </div>
           <BotonComponente
             label="Crear cuenta"
             onClick={crearUsuarioPeticion}
           />
+          <div className={styles.container_texto_footer_registrarse}>
+          <p>
+            ¿Ya tienes cuenta? <a href="/iniciar-sesion">Inicia Sesión Aquí</a>
+          </p>
+        </div>
         </div>
       </div>
       <div className={styles.seccion_imagen}>

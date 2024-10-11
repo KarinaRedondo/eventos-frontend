@@ -11,6 +11,8 @@ const useRegistrar = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  
+
   const crearUsuarioPeticion = async () => {
     setIsLoading(true);
     setError(null);
@@ -42,6 +44,7 @@ const useRegistrar = () => {
         title: "Error",
         text: errorMessage,
       });
+
     } finally {
       setIsLoading(false);
     }
