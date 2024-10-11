@@ -6,7 +6,7 @@
   margin-top: 2rem;
   padding-left: 2rem;
   padding-right: 2rem;
-  color: #fff;
+  color: #000;
 }
 
 .contenedor_tarjetas_eventos {
@@ -19,6 +19,21 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.formulario button {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #30475e;
+  color: #fff;
 }
 
 .inputFormulario {
@@ -36,3 +51,32 @@
   border: 1px solid rgba(0, 0, 0, 0.3);
   background-color: #f2f2f2;
 }
+
+.search_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
+
+.search_container input {
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #f2f2f2;
+  width: 80%;
+  padding: 1rem;
+}
+
+.search_container button {
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #30475e;
+  color: #fff;
+  width: 15%;
+}
+
+
+
+

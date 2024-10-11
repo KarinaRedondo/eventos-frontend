@@ -25,7 +25,7 @@ export const ModalComponente = ({
       <div className={styles.modal}>
         <div className={styles.headerModal}>
           <h2>{nombreModal}</h2>
-          <button onClick={cerrarModal}>Cerrar</button>
+          <button onClick={cerrarModal}>X</button>
         </div>
         <div className={styles.contenido}>{children}</div>
       </div>

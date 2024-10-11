@@ -1,3 +1,5 @@
+
+
 .tarjeta_evento {
   background-color: #fff;
   padding: 2rem;
@@ -27,4 +29,35 @@
 .item_tarjeta p {
   font-weight: 500;
   font-size: 1.4rem;
+}
+.contenedor__botones {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.btn_editar {
+  background-color: transparent;
+  color: green;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.btn_eliminar {
+  background-color: transparent;
+  color: red;
+  border: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
 }
