@@ -48,7 +48,7 @@ const IniciarSesion = () => {
     <div className={style.contenedor_iniciar_sesion}>
       <div className={style.contenedor_formulario}>
         <div className={style.header}>
-          <h1>Iniciar sesion </h1>
+          <h1>Iniciar sesión </h1>
         </div>
         <input
           type="email"
