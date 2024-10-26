@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Info, Briefcase, LogOut } from "react-feather";
+import { Info, LogOut } from "react-feather";
 import estilos from "./Sidebar.module.css";
 import { Menu, Minimize } from "react-feather";
 import { User } from "../../models/user";
@@ -21,7 +21,6 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
   });
 
   useEffect(() => {
-    // Obtener el objeto usuario desde localStorage y parsearlo
     const storedUsuario = localStorage.getItem("usuario");
     if (storedUsuario) {
       setUsuario(JSON.parse(storedUsuario));
@@ -59,25 +58,11 @@ const Sidebar = ({ estaAbierto, alternarBarraLateral }: PropsBarraLateral) => {
 
       <div className={estilos.contenedor_body}>
         <div className={estilos.contenedor_enlaces}>
-          <Link to="/" className={estilos.enlace}>
-            <span className={estilos.icono}>
-              <Home size={24} />
-            </span>
-            <span className={estilos.texto}>Inicio</span>
-          </Link>
-
           <Link to="/eventos" className={estilos.enlace}>
             <span className={estilos.icono}>
               <Info size={24} />
             </span>
             <span className={estilos.texto}>Eventos</span>
-          </Link>
-
-          <Link to="/asistentes" className={estilos.enlace}>
-            <span className={estilos.icono}>
-              <Briefcase size={24} />
-            </span>
-            <span className={estilos.texto}>Asistentes</span>
           </Link>
         </div>
 

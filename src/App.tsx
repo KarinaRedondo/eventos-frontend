@@ -12,7 +12,7 @@ function App() {
           <Route path="/iniciar-sesion" element={<IniciarSesion />} />
           <Route path="/registrarse" element={<Registrarse />} />
           <Route path="/eventos" element={<Eventos />} />
-          <Route path="/asistentes" element={<Asistentes />} />
+          <Route path="/" element={<Asistentes />} />
         </Routes>
       </BrowserRouter>
     </>

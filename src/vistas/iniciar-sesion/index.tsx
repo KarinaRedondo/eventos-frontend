@@ -7,14 +7,14 @@ import { Eye, EyeOff } from "react-feather";
 import Swal from "sweetalert2";
 
 const IniciarSesion = () => {
-  const navigate = useNavigate(); // Utilizar para redireccionar a otra ruta
+  const navigate = useNavigate(); 
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [cargando, setCargando] = useState(false);
   const [verContraseña, setVerContraseña] = useState(false);
 
   const loginPeticion = async () => {
-    setCargando(true); // Comienza la carga
+    setCargando(true); 
     try {
       const informacionDelUsuarioLogueado = await iniciarSesionApi(
         correo,
@@ -23,14 +23,14 @@ const IniciarSesion = () => {
       localStorage.setItem(
         "usuario",
         JSON.stringify(informacionDelUsuarioLogueado)
-      ); // Guardar en localStorage
+      );
       Swal.fire({
         icon: "success",
         title: "Inicio de sesión exitoso",
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/eventos"); // Redireccionar a /eventos
+      navigate("/eventos");
     } catch (error: unknown) {
       const mensajeError = "Algo salió mal, por favor intente nuevamente.";
       Swal.fire({
@@ -40,7 +40,7 @@ const IniciarSesion = () => {
         text: mensajeError,
       });
     } finally {
-      setCargando(false); // Finaliza la carga
+      setCargando(false);
     }
   };
 

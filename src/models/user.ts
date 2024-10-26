@@ -6,6 +6,6 @@ export interface User {
   contraseña: string;
   rol: string;
 }
-//Omit
-export type crearUsuarioDto= Omit<User, "id">
-export type actualizarUsuarioDto=Partial<User> 
+
+export type crearUsuarioDto = Omit<User, "id">;
+export type actualizarUsuarioDto = Partial<User>;

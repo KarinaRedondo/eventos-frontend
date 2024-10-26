@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 10rem;
+  padding-right: 10rem;
+}
+
+.botones {
+  display: flex;
+  gap: 1rem;
+}
+
+.botones button:hover{
+
+  background-color: #000;
+  color: #fff;
+}
+
+.botones button {
+  padding: 1rem;
+  border-radius: 0.4rem;
+  border: none;
+}
+
+.registro_eventos {
+  padding: 40px;
+  text-align: center;
+  background-color: #f4f4f9;
+  min-height: 100vh;
+}
+
+.registro_eventos h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.contenedor_tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.tarjeta_evento {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tarjeta_evento:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.nombre_evento {
+  font-size: 1.8em;
+  color: #1a73e8;
+  margin-bottom: 10px;
+}
+
+.contenedor_info {
+  margin: 15px 0;
+  color: #555;
+  font-size: 0.95em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contenedor_info p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contenedor_botones {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.btn_registro {
+  padding: 12px 24px;
+  background-color: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn_registro:hover {
+  background-color: #155ab7;
+  transform: translateY(-2px);
+}
+
+.mensaje_confirmacion {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+}

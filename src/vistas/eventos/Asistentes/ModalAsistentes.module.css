@@ -1,0 +1,114 @@
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.close_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.search_container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.search_icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+.search_input {
+  width: 100%;
+  padding: 8px 8px 8px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.asistentes_list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.asistente_card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.asistente_icono {
+  color: #666;
+  margin-right: 10px;
+}
+
+.asistente_info {
+  flex: 1;
+}
+
+.asistente_nombre {
+  margin: 0;
+  font-weight: bold;
+}
+
+.asistente_identificacion,
+.asistente_estado {
+  margin: 0;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.estado_icono {
+  margin-left: 10px;
+}
+
+.icono_asistio {
+  color: green;
+}
+
+.icono_no_asistio {
+  color: red;
+}
+
+.total_asistentes {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #666;
+  text-align: right;
+}

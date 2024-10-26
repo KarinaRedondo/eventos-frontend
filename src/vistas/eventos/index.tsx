@@ -1,15 +1,26 @@
 import { useEffect, useState } from "react";
 import Layout from "../../Componentes/Layout";
-import { crearEvento, obtenerEventos } from "../../servicios/eventos/eventos";
-import { Evento } from "../../models/eventos";
+import {
+  crearEventoServicio,
+  editarEvento,
+  obtenerEventos,
+} from "../../servicios/eventos/eventos";
+import { actualizarEventoDto, Evento } from "../../models/eventos";
 import styles from "./Eventos.module.css";
 import TarjetaEvento from "../../Componentes/TarjetaEvento";
-import { ModalComponente } from "../../Componentes/Modal";
-import { Search } from "react-feather";
+import { Formulario } from "./Formulario";
+import ModalAsistentes from "./Asistentes";
+import { obtenerAsistentes } from "../../servicios/asistentes/asistentes";
+import { Asistente } from "../../models/asistentes";
 
 const Eventos = () => {
-  const usuario = localStorage.getItem("usuario");
-  const user = JSON.parse(usuario!);
+  const usuario = localStorage.getItem("usuario"); // esta informacion llega en formato string
+  const user = JSON.parse(usuario!);  // aca se convierte en JSON para poder usarlo
+
+  const [asistentes, setAsistentes] = useState<Asistente[]>();
+  const [isModalAsistentesOpen, setIsModalAsistentesOpen] = useState(false);
+
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -17,22 +28,21 @@ const Eventos = () => {
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
   const [ubicacion, setUbicacion] = useState("");
-  const [organizador, setOrganizador] = useState("");
+  const [eventoSeleccionado, setEventoSeleccionado] =
+    useState<actualizarEventoDto | null>(null);
 
   const [abrirModal, setAbrirModal] = useState(false);
-
-  const abrirModalFuncion = () => {
-    setAbrirModal(true);
-  };
+  const [modoEdicion, setModoEdicion] = useState(false);
 
   const [eventos, setEventos] = useState<Evento[]>();
+
   const peticionObtenerEventos = async () => {
     const listaDeEventos = await obtenerEventos();
     setEventos(listaDeEventos);
   };
 
-  const crearEventoFuncion = async () => {
-    await crearEvento({
+  const crearEventoFuncion = async () => {  // siempre que vean esta estructura = async () => { piensen en una funcion
+    await crearEventoServicio({  // estas funciones las declaramos en los servicios
       nombre,
       descripcion,
       fechaInicio,
@@ -42,14 +52,77 @@ const Eventos = () => {
       organizador: user.id,
       asistentes: [""],
     });
+    setAbrirModal(false);
+    peticionObtenerEventos();
+  };
+
+  // HASTA AQUI LLEGO LA EXPLICACION
+
+  const editarEventoFuncion = async () => {
+    if (eventoSeleccionado) {
+      await editarEvento({
+        id: eventoSeleccionado.id,
+        nombre,
+        descripcion,
+        fechaInicio,
+        fechaFin,
+        ubicacion,
+        capacidadMaxima,
+      });
+      setAbrirModal(false);
+      setModoEdicion(false);
+      peticionObtenerEventos();
+    }
+  };
+
+  const abrirModalFuncion = () => {
+    setNombre("");
+    setDescripcion("");
+    setFechaInicio("");
+    setFechaFin("");
+    setCapacidadMaxima(0);
+    setUbicacion("");
+    setModoEdicion(false);
+    setAbrirModal(true);
+  };
+
+  const abrirModalActualizarFuncion = (evento: Evento) => {
+    setEventoSeleccionado(evento);
+    setNombre(evento.nombre);
+    setDescripcion(evento.descripcion);
+    setFechaInicio(evento.fechaInicio);
+    setFechaFin(evento.fechaFin);
+    setCapacidadMaxima(evento.capacidadMaxima);
+    setUbicacion(evento.ubicacion);
+    setModoEdicion(true);
+    setAbrirModal(true);
   };
 
   useEffect(() => {
     peticionObtenerEventos();
   }, []);
 
-  console.log(eventos);
+  const eventosFiltrados = eventos?.filter(
+    (evento) =>
+      evento.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      evento.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      evento.ubicacion.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
+  const abrirModalAsistentes = async (eventoId: string) => {
+    try {
+      const listaDeAsistentes = await obtenerAsistentes();
+
+      const asistentesFiltrados = listaDeAsistentes.filter(
+        (asistente) => asistente.idEvento === eventoId
+      );
+
+      setAsistentes(asistentesFiltrados);
+      setIsModalAsistentesOpen(true);
+    } catch (error) {
+      console.error("Error al cargar asistentes:", error);
+    }
+  };
   return (
     <Layout>
       <div className={styles.header_eventos}>
@@ -57,92 +130,62 @@ const Eventos = () => {
         <h4>Dashboard/eventos</h4>
       </div>
       <div className={styles.search_container}>
-        <input type="Search" placeholder="Buscar eventos" />
+        <input
+          type="search"
+          placeholder="Buscar eventos"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
         <button onClick={abrirModalFuncion}>Crear un evento</button>
       </div>
 
       <div className={styles.contenedor_tarjetas_eventos}>
-        {eventos?.map((evento: Evento) => (
+        {eventosFiltrados?.map((evento: Evento) => (
           <TarjetaEvento
+            key={evento.id}
             nombre={evento.nombre}
             descripcion={evento.descripcion}
             capacidadMaxima={evento.capacidadMaxima}
             ubicacion={evento.ubicacion}
+            fechaInicio={evento.fechaInicio}
+            fechaFin={evento.fechaFin}
             eventoId={evento.id}
+            funcionAbrirModal={() => abrirModalActualizarFuncion(evento)}
+            actualizarListaEventos={peticionObtenerEventos}
+            abrirModalAsistentes={() => abrirModalAsistentes(evento.id)}
           />
         ))}
       </div>
-      <ModalComponente
-        openModal={abrirModal}
-        setOpenModal={setAbrirModal}
-        nombreModal="Crear evento"
-      >
-        <form
-          className={styles.formulario}
-          action=""
-        
-        >
-          <div className={styles.inputFormulario}>
-            <label>Nombre del evento</label>
-            <input
-              type="text"
-              name="nombre"
-              placeholder="Nombre del evento"
-              onChange={(e) => setNombre(e.target.value)}
-            />
-          </div>
 
-          <div className={styles.inputFormulario}>
-            <label>Descripcion</label>
-            <input
-              type="text"
-              name="descripcion"
-              placeholder="Ingresa una descripcion"
-              onChange={(e) => setDescripcion(e.target.value)}
-            />
-          </div>
+      {abrirModal && (
+        <Formulario
+          abrirModal={abrirModal}
+          setAbrirModal={setAbrirModal}
+          setNombre={setNombre}
+          setDescripcion={setDescripcion}
+          setFechaInicio={setFechaInicio}
+          setFechaFin={setFechaFin}
+          setCapacidadMaxima={setCapacidadMaxima}
+          setUbicacion={setUbicacion}
+          crearEventoFuncion={crearEventoFuncion}
+          editarEventoFuncion={editarEventoFuncion}
+          modoEdicion={modoEdicion}
+          nombre={nombre}
+          descripcion={descripcion}
+          fechaInicio={fechaInicio}
+          fechaFin={fechaFin}
+          capacidadMaxima={capacidadMaxima}
+          ubicacion={ubicacion}
+        />
+      )}
 
-          <div className={styles.inputFormulario}>
-            <label>Fecha inicio</label>
-            <input
-              type="Date"
-              onChange={(e) => setFechaInicio(e.target.value)}
-            />
-          </div>
-
-          <div className={styles.inputFormulario}>
-            <label>Fecha fin</label>
-            <input type="Date" onChange={(e) => setFechaFin(e.target.value)} />
-          </div>
-
-          <div className={styles.inputFormulario}>
-            <label>Capacidad maxima</label>
-            <input
-              type="number"
-              onChange={(e) => setCapacidadMaxima(e.target.valueAsNumber)}
-            />
-          </div>
-
-          <div className={styles.inputFormulario}>
-            <label>Ubicacion</label>
-            <input type="text" onChange={(e) => setUbicacion(e.target.value)} />
-          </div>
-          <button onClick={crearEventoFuncion}>Crear</button>
-        </form>
-      </ModalComponente>
+      <ModalAsistentes
+        asistentes={asistentes!}
+        isOpen={isModalAsistentesOpen}
+        onClose={() => setIsModalAsistentesOpen(false)}
+      />
     </Layout>
   );
 };
 
 export default Eventos;
-
-// useState -> react
-// useNavigate -> react-router-dom
-// useEffect -> react
-
-// listaDeProductos es un array de productos [200]
-// mostrar los nombres de todos los produtos del array
-// .map recorre arrays
-// listaDeProductos.map((poducto:Producto) => (
-//           <p> {producto.nombre} </p>
-//     ) )

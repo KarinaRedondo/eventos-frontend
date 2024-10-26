@@ -1,9 +1,9 @@
-import { ReactNode } from "react";
+import { Dispatch, SetStateAction } from "react";
 import styles from "./Modal.module.css";
 
 interface PropsModal {
-  openModal: boolean;
-  setOpenModal: (value: boolean) => void;
+  openModal: boolean | undefined;
+  setOpenModal: Dispatch<SetStateAction<boolean>> | undefined;
   nombreModal: string;
   children: React.ReactNode;
 }
@@ -15,7 +15,7 @@ export const ModalComponente = ({
   children,
 }: PropsModal) => {
   const cerrarModal = () => {
-    setOpenModal(false);
+    setOpenModal && setOpenModal(false);
   };
 
   if (!openModal) return null;

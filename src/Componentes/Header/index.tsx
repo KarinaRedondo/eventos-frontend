@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import { User } from "../../models/user";
 
@@ -12,13 +12,12 @@ const Header = () => {
     rol: "",
   });
 
-  // useEffect(() => {
-  //   // Obtener el objeto usuario desde localStorage y parsearlo
-  //   const storedUsuario = localStorage.getItem("usuario");
-  //   if (storedUsuario) {
-  //     setUsuario(JSON.parse(storedUsuario));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const storedUsuario = localStorage.getItem("usuario");
+    if (storedUsuario) {
+      setUsuario(JSON.parse(storedUsuario));
+    }
+  }, []);
 
   return (
     <div className={styles.cn_header}>
