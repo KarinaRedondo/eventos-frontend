@@ -28,8 +28,7 @@ const Eventos = () => {
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
   const [ubicacion, setUbicacion] = useState("");
-  const [eventoSeleccionado, setEventoSeleccionado] =
-    useState<actualizarEventoDto | null>(null);
+  const [eventoSeleccionado, setEventoSeleccionado] = useState<actualizarEventoDto | null>(null);
 
   const [abrirModal, setAbrirModal] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
@@ -57,7 +56,6 @@ const Eventos = () => {
   };
 
   // HASTA AQUI LLEGO LA EXPLICACION
-
   const editarEventoFuncion = async () => {
     if (eventoSeleccionado) {
       await editarEvento({
