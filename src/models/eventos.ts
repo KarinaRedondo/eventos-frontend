@@ -9,5 +9,6 @@ export interface Evento {
   capacidadMaxima: number;
   asistentes: string[];
 }
+
 export type crearEventoDto = Omit<Evento, "id">;
-export type actualizarEventoDto = Partial<Evento>;
+export type actualizarEventoDto = Partial<Evento>; 

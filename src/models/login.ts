@@ -3,4 +3,5 @@ export interface Login {
     contraseña: string;
 
 }
-export type LoginDto = <Login> 
+
+//export type LoginDto = <Login> 

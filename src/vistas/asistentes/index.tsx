@@ -48,7 +48,7 @@ const Asistentes = () => {
       <div className={styles.header}>
         <h1>Asistentes</h1>
         <div className={styles.botones}>
-          <button onClick={() => navigate("/registro")}>Registro</button>
+          <button onClick={() => navigate("/registrarse")}>Registro</button>
           <button onClick={() => navigate("/iniciar-sesion")}>
             Iniciar Sesion
           </button>

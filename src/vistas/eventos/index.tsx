@@ -15,12 +15,12 @@ import { Asistente } from "../../models/asistentes";
 
 const Eventos = () => {
   const usuario = localStorage.getItem("usuario"); // esta informacion llega en formato string
-  const user = JSON.parse(usuario!);  // aca se convierte en JSON para poder usarlo
+  const user = JSON.parse(usuario!); // aca se convierte en JSON para poder usarlo
 
   const [asistentes, setAsistentes] = useState<Asistente[]>();
   const [isModalAsistentesOpen, setIsModalAsistentesOpen] = useState(false);
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [terminoDeBusqueda, setTerminoDeBusqueda] = useState("");
 
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -28,7 +28,8 @@ const Eventos = () => {
   const [fechaInicio, setFechaInicio] = useState("");
   const [fechaFin, setFechaFin] = useState("");
   const [ubicacion, setUbicacion] = useState("");
-  const [eventoSeleccionado, setEventoSeleccionado] = useState<actualizarEventoDto | null>(null);
+  const [eventoSeleccionado, setEventoSeleccionado] =
+    useState<actualizarEventoDto | null>(null);
 
   const [abrirModal, setAbrirModal] = useState(false);
   const [modoEdicion, setModoEdicion] = useState(false);
@@ -40,8 +41,10 @@ const Eventos = () => {
     setEventos(listaDeEventos);
   };
 
-  const crearEventoFuncion = async () => {  // siempre que vean esta estructura = async () => { piensen en una funcion
-    await crearEventoServicio({  // estas funciones las declaramos en los servicios
+  const crearEventoFuncion = async () => {
+    // siempre que vean esta estructura = async () => { piensen en una funcion
+    await crearEventoServicio({
+      // estas funciones las declaramos en los servicios
       nombre,
       descripcion,
       fechaInicio,
@@ -102,9 +105,11 @@ const Eventos = () => {
 
   const eventosFiltrados = eventos?.filter(
     (evento) =>
-      evento.nombre.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      evento.descripcion.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      evento.ubicacion.toLowerCase().includes(searchTerm.toLowerCase())
+      evento.nombre.toLowerCase().includes(terminoDeBusqueda.toLowerCase()) ||
+      evento.descripcion
+        .toLowerCase()
+        .includes(terminoDeBusqueda.toLowerCase()) ||
+      evento.ubicacion.toLowerCase().includes(terminoDeBusqueda.toLowerCase())
   );
 
   const abrirModalAsistentes = async (eventoId: string) => {
@@ -131,12 +136,11 @@ const Eventos = () => {
         <input
           type="search"
           placeholder="Buscar eventos"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          value={terminoDeBusqueda}
+          onChange={(e) => setTerminoDeBusqueda(e.target.value)}
         />
         <button onClick={abrirModalFuncion}>Crear un evento</button>
       </div>
-
       <div className={styles.contenedor_tarjetas_eventos}>
         {eventosFiltrados?.map((evento: Evento) => (
           <TarjetaEvento
