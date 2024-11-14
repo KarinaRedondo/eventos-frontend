@@ -92,6 +92,7 @@
   margin: 0;
   font-size: 0.9em;
   color: #666;
+  font-weight: bold;
 }
 
 .estado_icono {
@@ -111,4 +112,5 @@
   font-size: 0.9em;
   color: #666;
   text-align: right;
+  font-weight: bold;
 }

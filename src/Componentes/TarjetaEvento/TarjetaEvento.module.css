@@ -55,7 +55,8 @@
 }
 
 .btn_asistentes:hover {
-  background-color: #e0e0e0;
+  background-color: #070f2b;
+  color: #f5f5f5;
 }
 
 .btn_editar,
@@ -74,13 +75,10 @@
   transform: scale(1.1);
 }
 
+.btn_eliminar:hover {
+  color: red;
+}
+
 .icono_btn {
   margin-right: 4px;
-}
-.descripcion {
-  font-size: 0.9em;
-  color: #666;
-  line-height: 1.4;
-  overflow: hidden;
-  display: -webkit-box;
 }
