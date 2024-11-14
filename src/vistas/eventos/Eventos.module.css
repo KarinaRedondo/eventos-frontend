@@ -12,7 +12,10 @@
 .contenedor_tarjetas_eventos {
   padding: 2rem;
   display: flex;
-  gap: 1rem;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  min-height: 200px;
 }
 
 .contenedor_items {
@@ -20,8 +23,6 @@
   flex-direction: column;
   gap: 1rem;
 }
-
-
 
 .search_container {
   display: flex;
@@ -47,7 +48,3 @@
   color: #fff;
   width: 15%;
 }
-
-
-
-

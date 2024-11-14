@@ -21,7 +21,7 @@ const ModalRegistro = ({
   const [identificacion, setIdentificacion] = useState<number | undefined>();
   const [error, setError] = useState("");
 
-  const handleSubmit = async () => {
+  const crearAsistenteFuncion = async () => {
     if (!nombre || !identificacion) {
       setError("Por favor, completa todos los campos.");
       return;
@@ -75,7 +75,7 @@ const ModalRegistro = ({
             onChange={(e) => setIdentificacion(Number(e.target.value))}
             className={styles.input}
           />
-          <button onClick={handleSubmit} className={styles.btn_registrar}>
+          <button onClick={crearAsistenteFuncion} className={styles.btn_registrar}>
             Registrarse
           </button>
         </div>

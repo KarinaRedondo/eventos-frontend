@@ -54,6 +54,9 @@ const Registrarse = () => {
 
   return (
     <div className={styles.contenedor}>
+      <div className={styles.seccion_imagen}>
+        <img src="logo.jpg" alt="logo" />
+      </div>
       <div className={styles.seccion_formulario}>
         <div className={styles.contenedor_formulario}>
           <div className={styles.header}>
@@ -104,7 +107,6 @@ const Registrarse = () => {
         </div>
       </div>
       <div className={styles.seccion_imagen}>
-        <h1>IZQUIERDA</h1>
       </div>
     </div>
   );

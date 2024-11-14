@@ -82,5 +82,4 @@ const IniciarSesion = () => {
     </div>
   );
 };
-
 export default IniciarSesion;

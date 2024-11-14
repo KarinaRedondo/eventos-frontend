@@ -4,16 +4,13 @@
   height: 100vh;
 }
 
-.seccion_imagen {
-  background-color: #000;
-  color: #000;
-}
-
 .seccion_formulario {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 6rem;
+  max-width: 600px;
+  
 }
 
 .header h1 {
@@ -71,4 +68,21 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+.seccion_imagen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  border-radius: 4px;
 }
