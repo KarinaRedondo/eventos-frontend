@@ -75,7 +75,6 @@ const Asistentes = () => {
                   <MapPin /> {evento.ubicacion}
                 </p>
                 <p>Cupo Máximo: {evento.capacidadMaxima}</p>
-                <p>Organizador: {evento.organizador}</p>
               </div>
 
               <div className={styles.contenedor_botones}>
