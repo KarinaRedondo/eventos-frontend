@@ -44,7 +44,7 @@ const Eventos = () => {
   const crearEventoFuncion = async () => {
     // siempre que vean esta estructura = async () => { piensen en una funcion
     await crearEventoServicio({
-      // estas funciones las declaramos en los servicios
+      // estas atributos los declaramos en los servicios
       nombre,
       descripcion,
       fechaInicio,
